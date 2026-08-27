@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-
-
 /* ========================================
    MOBILE NAVIGATION
 ======================================== */
@@ -9,24 +5,22 @@
 const menuIcon = document.getElementById("menuIcon");
 const navLinks = document.getElementById("navLinks");
 
-menuIcon.addEventListener("click", function () {
+if (menuIcon && navLinks) {
 
-    navLinks.classList.toggle("active");
-
-});
-
-
-/* Close menu after clicking a link */
-
-document.querySelectorAll(".nav-links a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navLinks.classList.remove("active");
-
+    menuIcon.addEventListener("click", function () {
+        navLinks.classList.toggle("active");
     });
 
-});
+    /* Close menu after clicking a link */
+
+    document.querySelectorAll(".nav-links a").forEach(function (link) {
+
+        link.addEventListener("click", function () {
+            navLinks.classList.remove("active");
+        });
+
+    });
+}
 
 
 /* ========================================
@@ -37,11 +31,10 @@ const typing = document.getElementById("typing");
 
 const roles = [
     "A CS & IT Student",
-    "An Aspiring Full Stack Developer,",
-    "Enthusiastic in Python Programming,",
-    "Data Structures & Algorithms and",
-    "Problem Solving..."
-    
+    "An Aspiring Full Stack Developer",
+    "An Enthusiastic Python Programmer",
+    "Passionate about Data Structures & Algorithms",
+    " and Problem Solving..."
 ];
 
 let roleIndex = 0;
@@ -50,6 +43,10 @@ let deleting = false;
 
 
 function typeEffect() {
+
+    if (!typing) {
+        return;
+    }
 
     const currentRole = roles[roleIndex];
 
@@ -83,13 +80,10 @@ function typeEffect() {
             roleIndex++;
 
             if (roleIndex >= roles.length) {
-
                 roleIndex = 0;
-
             }
 
         }
-
     }
 
     setTimeout(
@@ -108,137 +102,18 @@ typeEffect();
 const contactForm =
     document.getElementById("contactForm");
 
-contactForm.addEventListener("submit", function (event) {
+if (contactForm) {
 
-    event.preventDefault();
+    contactForm.addEventListener("submit", function (event) {
 
-    alert(
-        "Thank you for contacting me! " +
-        "This form is currently a demo."
-    );
+        event.preventDefault();
 
-    contactForm.reset();
+        alert(
+            "Thank you for contacting me! " +
+            "This form is currently a demo."
+        );
 
-=======
-
-
-
-/* ========================================
-   MOBILE NAVIGATION
-======================================== */
-
-const menuIcon = document.getElementById("menuIcon");
-const navLinks = document.getElementById("navLinks");
-
-menuIcon.addEventListener("click", function () {
-
-    navLinks.classList.toggle("active");
-
-});
-
-
-/* Close menu after clicking a link */
-
-document.querySelectorAll(".nav-links a").forEach(function (link) {
-
-    link.addEventListener("click", function () {
-
-        navLinks.classList.remove("active");
+        contactForm.reset();
 
     });
-
-});
-
-
-/* ========================================
-   TYPING ANIMATION
-======================================== */
-
-const typing = document.getElementById("typing");
-
-const roles = [
-    "A CS & IT Student",
-    "An Aspiring Full Stack Developer,",
-    "Enthusiastic in Python Programming,",
-    "Data Structures & Algorithms and",
-    "Problem Solving..."
-    
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-
-function typeEffect() {
-
-    const currentRole = roles[roleIndex];
-
-    if (!deleting) {
-
-        typing.textContent =
-            currentRole.substring(0, charIndex + 1);
-
-        charIndex++;
-
-        if (charIndex === currentRole.length) {
-
-            deleting = true;
-
-            setTimeout(typeEffect, 1500);
-
-            return;
-        }
-
-    } else {
-
-        typing.textContent =
-            currentRole.substring(0, charIndex - 1);
-
-        charIndex--;
-
-        if (charIndex === 0) {
-
-            deleting = false;
-
-            roleIndex++;
-
-            if (roleIndex >= roles.length) {
-
-                roleIndex = 0;
-
-            }
-
-        }
-
-    }
-
-    setTimeout(
-        typeEffect,
-        deleting ? 45 : 90
-    );
 }
-
-typeEffect();
-
-
-/* ========================================
-   CONTACT FORM
-======================================== */
-
-const contactForm =
-    document.getElementById("contactForm");
-
-contactForm.addEventListener("submit", function (event) {
-
-    event.preventDefault();
-
-    alert(
-        "Thank you for contacting me! " +
-        "This form is currently a demo."
-    );
-
-    contactForm.reset();
-
->>>>>>> c2ca90f8aac5fd04a99b670ed7e235595784ef78
-});
